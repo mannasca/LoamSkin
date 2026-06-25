@@ -112,6 +112,7 @@ export default function App() {
         <Route path="/products" element={<Products onAddToCart={handleAddToCart} />} />
         <Route path="/success" element={<Success />} />
       </Routes>
+      <Footer />
       <CartDrawer
         isOpen={cartOpen}
         items={cartItems}
