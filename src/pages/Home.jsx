@@ -1,0 +1,296 @@
+import { useState, useEffect } from 'react'
+import JarIllustration from '../components/JarIllustration'
+import ProductCard from '../components/ProductCard'
+import { products, testimonials, ritualSteps, press } from '../data/products'
+import styles from './Home.module.css'
+
+const ingredientLoop = [
+  'Shea Butter', 'Mango Seed', 'Jojoba Oil', 'Rosehip', 'Vitamin E',
+  'Cocoa Butter', 'Argan Oil', 'Calendula', 'Chamomile', 'Turmeric',
+]
+
+const BENEFITS = [
+  { symbol: '✦', label: 'Small-Batch Made' },
+  { symbol: '◯', label: 'Vegan Formula' },
+  { symbol: '✓', label: 'Cruelty-Free' },
+  { symbol: '⊕', label: 'No Synthetic Fillers' },
+  { symbol: '❋', label: '100% Botanical' },
+  { symbol: '↺', label: 'Sustainably Sourced' },
+]
+
+export default function Home({ onAddToCart }) {
+  const [subscribed, setSubscribed] = useState(false)
+
+  useEffect(() => {
+    const els = document.querySelectorAll('[data-animate]')
+    if (!els.length) return
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.setAttribute('data-visible', '')
+          observer.unobserve(e.target)
+        }
+      }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    )
+    els.forEach(el => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <main>
+      {/* ── Hero ──────────────────────────────────────────── */}
+      <section className={styles.hero}>
+        <div className={styles.heroText}>
+          <p className={styles.heroBadge}>Fresh Batch · 2026</p>
+          <p className={styles.eyebrow}>Pure · Botanical · Slow-made</p>
+          <h1 className={styles.headline}>
+            Skin that feels<br />
+            like <em>earth</em><br />
+            in bloom.
+          </h1>
+          <p className={styles.heroBody}>
+            LoamSkin body butter is drawn from botanical roots — pressed,
+            blended, and small-batched for skin that breathes naturally.
+          </p>
+          <div className={styles.socialProof}>
+            <span className={styles.spStars}>★★★★★</span>
+            <span className={styles.spText}>
+              Loved by <strong>2,400+</strong> customers
+            </span>
+          </div>
+          <div className={styles.heroCtas}>
+            <a href="#products" className={styles.btnPrimary}>
+              Shop the Collection
+              <span className={styles.btnArrow}>→</span>
+            </a>
+            <a href="#story" className={styles.btnGhost}>Our Story</a>
+          </div>
+        </div>
+
+        <div className={styles.heroVisual}>
+          <span className={styles.floatPill} data-fp="1">Shea Butter</span>
+          <span className={styles.floatPill} data-fp="2">Jojoba Oil</span>
+          <span className={styles.floatPill} data-fp="3">Vitamin E</span>
+          <div className={styles.productCard}>
+            <div className={styles.productBlob} />
+            <JarIllustration lidColor="loam" size="md" />
+            <p className={styles.cardName}>Original Butter</p>
+            <div className={styles.accentLine} />
+            <p className={styles.cardSub}>Shea · Mango · Jojoba</p>
+            <div className={styles.cardRating}>
+              <span>★★★★★</span>
+              <span>4.9 (834 reviews)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Ingredient Strip ──────────────────────────────── */}
+      <div className={styles.strip}>
+        <div className={styles.stripTrack}>
+          {[...ingredientLoop, ...ingredientLoop].map((ing, i) => (
+            <span key={i}>{ing}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Benefits Bar ──────────────────────────────────── */}
+      <div className={styles.benefits}>
+        <div className={styles.benefitsInner}>
+          {BENEFITS.map((b, i) => (
+            <div
+              key={b.label}
+              className={styles.benefit}
+              data-animate
+              data-delay={String(Math.min(i + 1, 5))}
+            >
+              <span className={styles.bIcon}>{b.symbol}</span>
+              <span className={styles.bLabel}>{b.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── About ─────────────────────────────────────────── */}
+      <section className={styles.about} id="story">
+        <div className={styles.aboutInner}>
+          <div className={styles.aboutVisual} data-animate>
+            <div className={`${styles.tile} ${styles.tileLoam}`}>
+              <span className={styles.tileIcon}>🌿</span>
+              <span className={styles.tileTxt}>Botanical</span>
+            </div>
+            <div className={`${styles.tile} ${styles.tileSage} ${styles.tileDown}`}>
+              <span className={styles.tileIcon}>✦</span>
+              <span className={styles.tileTxt}>Unrefined</span>
+            </div>
+            <div className={`${styles.tile} ${styles.tileLoamLight} ${styles.tileUp}`}>
+              <span className={styles.tileIcon}>◯</span>
+              <span className={styles.tileTxt}>No Fillers</span>
+            </div>
+            <div className={`${styles.tile} ${styles.tileDark}`}>
+              <span className={styles.tileNum}>100%</span>
+              <span className={styles.tileTxtLight}>Natural</span>
+            </div>
+          </div>
+          <div className={styles.aboutText} data-animate data-delay="2">
+            <span className={styles.sectionLabel}>Our Philosophy</span>
+            <h2 className={styles.sectionHeadline}>
+              Rooted in <em>nature</em>,<br />made with intention.
+            </h2>
+            <p className={styles.bodyText} style={{ marginBottom: '1.25rem' }}>
+              We believe skin care should come from the earth — not a lab. Every
+              LoamSkin butter starts with cold-pressed botanicals, ethically
+              sourced and left as close to their natural state as possible.
+            </p>
+            <p className={styles.bodyText}>
+              No artificial fragrance. No synthetic fillers. Just what your skin
+              recognizes and actually absorbs.
+            </p>
+            <a href="#products" className={`${styles.btnGhost} ${styles.mt}`}>
+              Explore the range
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Products ──────────────────────────────────────── */}
+      <section className={styles.products} id="products">
+        <div className={styles.productsInner}>
+          <div className={styles.productsHeader} data-animate>
+            <div>
+              <span className={styles.sectionLabel}>The Collection</span>
+              <h2 className={styles.sectionHeadline}>
+                Every skin,<br />a different <em>blend.</em>
+              </h2>
+            </div>
+            <a href="#products" className={styles.btnGhost}>View all</a>
+          </div>
+          <div className={styles.productsGrid}>
+            {products.map((p, i) => (
+              <div key={p.id} data-animate data-delay={String(i + 1)}>
+                <ProductCard product={p} onAddToCart={onAddToCart} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Press ─────────────────────────────────────────── */}
+      <div className={styles.pressBar}>
+        <div className={styles.pressInner}>
+          <p className={styles.pressLabel}>As Featured In</p>
+          <div className={styles.pressLogos}>
+            {press.map(name => (
+              <span key={name} className={styles.pressName}>{name}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Ritual ────────────────────────────────────────── */}
+      <section className={styles.ritual} id="ritual">
+        <div className={styles.ritualInner}>
+          <div data-animate>
+            <span className={styles.sectionLabel}>The Ritual</span>
+            <h2 className={styles.sectionHeadline}>
+              Slow down.<br /><em>Feed</em> your skin.
+            </h2>
+            <ul className={styles.steps}>
+              {ritualSteps.map(step => (
+                <li key={step.num} className={styles.step}>
+                  <span className={styles.stepNum}>{step.num}</span>
+                  <div>
+                    <p className={styles.stepTitle}>{step.title}</p>
+                    <p className={styles.stepDesc}>{step.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.ritualVisual} data-animate data-delay="2">
+            <div className={styles.ritualBox}>
+              <p className={styles.ritualQuote}>
+                "Your skin remembers what you feed it."
+              </p>
+              <span className={styles.ritualSub}>— LoamSkin</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials ──────────────────────────────────── */}
+      <section className={styles.testimonials} id="reviews">
+        <div className={styles.testimonialsInner}>
+          <div className={styles.testimonialsHeader} data-animate>
+            <span className={styles.sectionLabel}>Real Results</span>
+            <h2 className={styles.sectionHeadline}>
+              Skin that speaks<br />for <em>itself.</em>
+            </h2>
+            <p className={styles.testimonialsSubhead}>
+              Over 2,400 verified five-star reviews.
+            </p>
+          </div>
+          <div className={styles.testimonialsGrid}>
+            {testimonials.map((t, i) => (
+              <blockquote
+                key={t.id}
+                className={styles.tCard}
+                data-animate
+                data-delay={String(i + 1)}
+              >
+                <div className={styles.tTop}>
+                  <span className={styles.tStars}>★★★★★</span>
+                  <span className={styles.tVerified}>✓ Verified Purchase</span>
+                </div>
+                <p className={styles.tText}>"{t.text}"</p>
+                <footer className={styles.tFooter}>
+                  <div className={styles.tAvatar}>{t.author[0]}</div>
+                  <div>
+                    <p className={styles.tAuthor}>{t.author}</p>
+                    <p className={styles.tMeta}>{t.location} · {t.product}</p>
+                  </div>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Newsletter ────────────────────────────────────── */}
+      <section className={styles.newsletter} id="newsletter">
+        <div className={styles.newsletterInner} data-animate>
+          <span className={styles.sectionLabel} style={{ color: 'var(--loam-light)' }}>
+            Join the Circle
+          </span>
+          <h2 className={styles.sectionHeadline} style={{ color: 'var(--loam-pale)' }}>
+            Rituals, restocks &<br /><em>early access.</em>
+          </h2>
+          <p className={styles.newsletterBody}>
+            Join 8,000+ botanical lovers. Get 10% off your first order.
+          </p>
+          {subscribed ? (
+            <div className={styles.successMsg}>
+              <span className={styles.successIcon}>✓</span>
+              <span>You're on the list. Welcome to the circle.</span>
+            </div>
+          ) : (
+            <form
+              className={styles.newsletterForm}
+              onSubmit={e => { e.preventDefault(); setSubscribed(true) }}
+            >
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className={styles.emailInput}
+                required
+              />
+              <button type="submit" className={styles.submitBtn}>Subscribe</button>
+            </form>
+          )}
+          <p className={styles.newsletterNote}>No spam. Unsubscribe anytime.</p>
+        </div>
+      </section>
+    </main>
+  )
+}

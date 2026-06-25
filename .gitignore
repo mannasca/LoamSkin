@@ -1,0 +1,10 @@
+
+# Secret environment variables — never commit
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Generated / installed files
+node_modules/
+dist/
