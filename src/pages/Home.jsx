@@ -21,6 +21,9 @@ const BENEFITS = [
 
 export default function Home({ onAddToCart }) {
   const [subscribed, setSubscribed] = useState(false)
+  const [email, setEmail] = useState('')
+  const [subError, setSubError] = useState('')
+  const [subLoading, setSubLoading] = useState(false)
 
   useEffect(() => {
     const els = document.querySelectorAll('[data-animate]')
@@ -278,17 +281,43 @@ export default function Home({ onAddToCart }) {
           ) : (
             <form
               className={styles.newsletterForm}
-              onSubmit={e => { e.preventDefault(); setSubscribed(true) }}
+              onSubmit={async e => {
+                e.preventDefault()
+                setSubError('')
+                setSubLoading(true)
+                try {
+                  const res = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email }),
+                  })
+                  const data = await res.json()
+                  if (res.ok) {
+                    setSubscribed(true)
+                  } else {
+                    setSubError(data.error || 'Something went wrong. Try again.')
+                  }
+                } catch {
+                  setSubError('Something went wrong. Try again.')
+                } finally {
+                  setSubLoading(false)
+                }
+              }}
             >
               <input
                 type="email"
                 placeholder="your@email.com"
                 className={styles.emailInput}
+                value={email}
+                onChange={e => setEmail(e.target.value)}
                 required
               />
-              <button type="submit" className={styles.submitBtn}>Subscribe</button>
+              <button type="submit" className={styles.submitBtn} disabled={subLoading}>
+                {subLoading ? 'Subscribing…' : 'Subscribe'}
+              </button>
             </form>
           )}
+          {subError && <p className={styles.subError}>{subError}</p>}
           <p className={styles.newsletterNote}>No spam. Unsubscribe anytime.</p>
         </div>
       </section>

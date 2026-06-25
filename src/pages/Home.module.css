@@ -731,6 +731,13 @@ main {
   margin-top: 1.1rem;
 }
 
+.subError {
+  font-size: 0.72rem;
+  color: #e07a5f;
+  margin-top: 0.6rem;
+  letter-spacing: 0.04em;
+}
+
 /* ── Motion ───────────────────────────────────────────────────── */
 @keyframes riseIn {
   from { opacity: 0; transform: translateY(24px); }
