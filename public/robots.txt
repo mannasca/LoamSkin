@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loamskin.com/sitemap.xml
