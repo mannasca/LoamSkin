@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import JarIllustration from '../components/JarIllustration'
 import ProductCard from '../components/ProductCard'
-import { products, testimonials, ritualSteps, press } from '../data/products'
+import { products, testimonials, ritualSteps } from '../data/products'
 import styles from './Home.module.css'
 
 const ingredientLoop = [
-  'Shea Butter', 'Mango Seed', 'Jojoba Oil', 'Rosehip', 'Vitamin E',
-  'Cocoa Butter', 'Argan Oil', 'Calendula', 'Chamomile', 'Turmeric',
+  'Shea Butter', 'Sweet Almond Oil', 'Jojoba Oil', 'Beeswax', 'Vitamin E',
+  'Shea Butter', 'Sweet Almond Oil', 'Jojoba Oil', 'Beeswax', 'Vitamin E',
 ]
 
 const BENEFITS = [
@@ -54,15 +54,9 @@ export default function Home({ onAddToCart }) {
             in bloom.
           </h1>
           <p className={styles.heroBody}>
-            LoamSkin body butter is drawn from botanical roots — pressed,
-            blended, and small-batched for skin that breathes naturally.
+            First Rain body butter — shea and sweet almond oil, hand-poured
+            in small batches. The scent of earth after rain, on your skin.
           </p>
-          <div className={styles.socialProof}>
-            <span className={styles.spStars}>★★★★★</span>
-            <span className={styles.spText}>
-              Loved by <strong>2,400+</strong> customers
-            </span>
-          </div>
           <div className={styles.heroCtas}>
             <a href="#products" className={styles.btnPrimary}>
               Shop the Collection
@@ -78,13 +72,13 @@ export default function Home({ onAddToCart }) {
           <span className={styles.floatPill} data-fp="3">Vitamin E</span>
           <div className={styles.productCard}>
             <div className={styles.productBlob} />
-            <JarIllustration lidColor="loam" size="md" />
-            <p className={styles.cardName}>Original Butter</p>
+            <JarIllustration lidColor="sage" size="md" />
+            <p className={styles.cardName}>First Rain</p>
             <div className={styles.accentLine} />
-            <p className={styles.cardSub}>Shea · Mango · Jojoba</p>
+            <p className={styles.cardSub}>Shea · Almond · Jojoba</p>
             <div className={styles.cardRating}>
               <span>★★★★★</span>
-              <span>4.9 (834 reviews)</span>
+              <span>5.0 (12 reviews)</span>
             </div>
           </div>
         </div>
@@ -180,18 +174,6 @@ export default function Home({ onAddToCart }) {
         </div>
       </section>
 
-      {/* ── Press ─────────────────────────────────────────── */}
-      <div className={styles.pressBar}>
-        <div className={styles.pressInner}>
-          <p className={styles.pressLabel}>As Featured In</p>
-          <div className={styles.pressLogos}>
-            {press.map(name => (
-              <span key={name} className={styles.pressName}>{name}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* ── Ritual ────────────────────────────────────────── */}
       <section className={styles.ritual} id="ritual">
         <div className={styles.ritualInner}>
@@ -232,7 +214,7 @@ export default function Home({ onAddToCart }) {
               Skin that speaks<br />for <em>itself.</em>
             </h2>
             <p className={styles.testimonialsSubhead}>
-              Over 2,400 verified five-star reviews.
+              Early customers. Real results.
             </p>
           </div>
           <div className={styles.testimonialsGrid}>
@@ -271,7 +253,7 @@ export default function Home({ onAddToCart }) {
             Rituals, restocks &<br /><em>early access.</em>
           </h2>
           <p className={styles.newsletterBody}>
-            Join 8,000+ botanical lovers. Get 10% off your first order.
+            Be the first to know about restocks and new batches. Get 10% off your first order.
           </p>
           {subscribed ? (
             <div className={styles.successMsg}>

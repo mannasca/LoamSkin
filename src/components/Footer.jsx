@@ -42,10 +42,8 @@ export default function Footer() {
         <div className={styles.col}>
           <p className={styles.colTitle}>Shop</p>
           <ul className={styles.colLinks}>
-            <li><a href="#products">Original Butter</a></li>
-            <li><a href="#products">Forest Calm</a></li>
-            <li><a href="#products">Rosehip Glow</a></li>
-            <li><a href="#products">Gift Sets</a></li>
+            <li><a href="#products">First Rain</a></li>
+            <li><a href="#products">Body Butter 50g</a></li>
           </ul>
         </div>
 
@@ -54,18 +52,16 @@ export default function Footer() {
           <ul className={styles.colLinks}>
             <li><a href="#story">Our Story</a></li>
             <li><a href="#ritual">The Ritual</a></li>
-            <li><a href="#">Journal</a></li>
-            <li><a href="#">Wholesale</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
           </ul>
         </div>
 
         <div className={styles.col}>
           <p className={styles.colTitle}>Support</p>
           <ul className={styles.colLinks}>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Shipping</a></li>
-            <li><a href="#">Returns</a></li>
+            <li><a href="mailto:hello@loamskin.com">Contact Us</a></li>
+            <li><a href="#newsletter">Subscribe</a></li>
+            <li><a href="#products">Shop Now</a></li>
           </ul>
         </div>
       </div>
@@ -77,8 +73,8 @@ export default function Footer() {
       </div>
 
       <div className={styles.bottom}>
-        <p>© 2026 LoamSkin. All rights reserved.</p>
-        <p className={styles.bottomLinks}>Privacy · Terms · Shipping</p>
+        <p>© {new Date().getFullYear()} LoamSkin. All rights reserved. Made in Canada.</p>
+        <p className={styles.bottomLinks}>Privacy Policy · Terms of Service · Shipping Policy</p>
       </div>
     </footer>
   )
