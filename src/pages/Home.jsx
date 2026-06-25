@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import JarIllustration from '../components/JarIllustration'
 import ProductCard from '../components/ProductCard'
-import { products, testimonials, ritualSteps } from '../data/products'
+import { products, ritualSteps } from '../data/products'
 import styles from './Home.module.css'
 
 const ingredientLoop = [
@@ -205,45 +205,7 @@ export default function Home({ onAddToCart }) {
         </div>
       </section>
 
-      {/* ── Testimonials ──────────────────────────────────── */}
-      <section className={styles.testimonials} id="reviews">
-        <div className={styles.testimonialsInner}>
-          <div className={styles.testimonialsHeader} data-animate>
-            <span className={styles.sectionLabel}>Real Results</span>
-            <h2 className={styles.sectionHeadline}>
-              Skin that speaks<br />for <em>itself.</em>
-            </h2>
-            <p className={styles.testimonialsSubhead}>
-              Early customers. Real results.
-            </p>
-          </div>
-          <div className={styles.testimonialsGrid}>
-            {testimonials.map((t, i) => (
-              <blockquote
-                key={t.id}
-                className={styles.tCard}
-                data-animate
-                data-delay={String(i + 1)}
-              >
-                <div className={styles.tTop}>
-                  <span className={styles.tStars}>★★★★★</span>
-                  <span className={styles.tVerified}>✓ Verified Purchase</span>
-                </div>
-                <p className={styles.tText}>"{t.text}"</p>
-                <footer className={styles.tFooter}>
-                  <div className={styles.tAvatar}>{t.author[0]}</div>
-                  <div>
-                    <p className={styles.tAuthor}>{t.author}</p>
-                    <p className={styles.tMeta}>{t.location} · {t.product}</p>
-                  </div>
-                </footer>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Newsletter ────────────────────────────────────── */}
+{/* ── Newsletter ────────────────────────────────────── */}
       <section className={styles.newsletter} id="newsletter">
         <div className={styles.newsletterInner} data-animate>
           <span className={styles.sectionLabel} style={{ color: 'var(--loam-light)' }}>
