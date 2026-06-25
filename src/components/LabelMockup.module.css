@@ -1,0 +1,407 @@
+:root {
+  --paper: #EBE4D4;
+  --ink: #38322A;
+  --muted: #7C7567;
+  --faint: #A79F8E;
+  --rain: #5E6B62;
+  --concrete: #8A847A;
+  --concrete-dark: #736E64;
+  --label-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --label-sans: "Jost", "Century Gothic", system-ui, sans-serif;
+  --label-util: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=Inter:wght@400;500;600&display=swap');
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 34px 18px 56px;
+  font-family: var(--label-util);
+  color: var(--ink);
+  background:
+    radial-gradient(120% 80% at 30% 0%, #948E84 0%, var(--concrete) 45%, var(--concrete-dark) 100%);
+  border-radius: 12px;
+}
+
+.kicker {
+  font-family: var(--label-util);
+  text-align: center;
+  color: #EFEAE0;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+
+.kickerSub {
+  text-align: center;
+  color: #E7E1D6;
+  opacity: 0.6;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  margin-bottom: 30px;
+  font-style: italic;
+  font-family: var(--label-serif);
+}
+
+/* ── Panels ─────────────────────────────── */
+.panels {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  align-items: center;
+}
+
+@media (min-width: 760px) {
+  .panels {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 30px;
+  }
+}
+
+.panelShell {
+  flex: 1 1 0;
+  max-width: 330px;
+  width: 100%;
+}
+
+.tag {
+  font-family: var(--label-util);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #E7E1D6;
+  opacity: 0.7;
+  font-weight: 500;
+  margin: 0 0 10px 2px;
+}
+
+/* ── Label card ─────────────────────────── */
+.label {
+  background: var(--paper);
+  border-radius: 3px;
+  box-shadow: 0 18px 40px -16px rgba(20, 16, 10, 0.55), 0 2px 0 rgba(255, 255, 255, 0.25) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Front ──────────────────────────────── */
+.front {
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 26px;
+}
+
+.brand {
+  font-family: var(--label-sans);
+  font-weight: 300;
+  font-size: 34px;
+  letter-spacing: 0.40em;
+  text-indent: 0.40em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.brandRule {
+  width: 26px;
+  height: 1px;
+  background: var(--faint);
+  margin: 16px 0 22px;
+}
+
+.scent {
+  font-family: var(--label-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 33px;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.scentNative {
+  font-family: var(--label-serif);
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-top: 6px;
+}
+
+.horizon {
+  position: relative;
+  width: 120px;
+  height: 14px;
+  margin: 24px 0 22px;
+}
+
+.line {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--faint);
+}
+
+.drop {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 8px;
+  background: var(--rain);
+  border-radius: 60% 60% 60% 60% / 80% 80% 40% 40%;
+  box-shadow: 0 0 0 4px var(--paper);
+}
+
+.typeLine {
+  font-family: var(--label-sans);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.30em;
+  text-indent: 0.30em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.typeFr {
+  font-family: var(--label-sans);
+  font-weight: 300;
+  font-size: 9.5px;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.netwt {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  font-family: var(--label-util);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ── Back ───────────────────────────────── */
+.back {
+  aspect-ratio: 3 / 4;
+  padding: 24px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.backBrand {
+  font-family: var(--label-sans);
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-align: center;
+}
+
+.backScent {
+  font-family: var(--label-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.hr {
+  height: 1px;
+  background: rgba(56, 50, 42, 0.16);
+  margin: 14px 0 12px;
+}
+
+.blk {
+  margin-bottom: 11px;
+}
+
+.blk h4 {
+  font-family: var(--label-util);
+  font-weight: 600;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rain);
+  margin-bottom: 4px;
+}
+
+.blk p {
+  font-family: var(--label-util);
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.fr {
+  color: var(--muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.inci {
+  font-size: 8.5px !important;
+  line-height: 1.55 !important;
+  color: #4a4339 !important;
+}
+
+.claim {
+  font-family: var(--label-serif);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.35;
+}
+
+.claimFr {
+  font-size: 9.5px;
+  color: var(--muted);
+  font-style: italic;
+  display: block;
+  margin-top: 2px;
+}
+
+.backFoot {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(56, 50, 42, 0.16);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.rp {
+  font-family: var(--label-util);
+  font-size: 7.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.rp strong {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.pao {
+  flex-shrink: 0;
+  text-align: center;
+  font-family: var(--label-util);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.jar {
+  width: 18px;
+  height: 16px;
+  border: 1.4px solid var(--muted);
+  border-radius: 2px 2px 3px 3px;
+  margin: 0 auto 3px;
+  position: relative;
+}
+
+.jar::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 3px;
+  right: 3px;
+  height: 3px;
+  border: 1.4px solid var(--muted);
+  border-bottom: none;
+  border-radius: 2px 2px 0 0;
+}
+
+/* ── Legend ─────────────────────────────── */
+.legend {
+  margin: 40px auto 0;
+  max-width: 620px;
+  background: rgba(247, 243, 236, 0.94);
+  border-radius: 10px;
+  padding: 22px 22px 20px;
+  box-shadow: 0 14px 34px -18px rgba(20, 16, 10, 0.5);
+}
+
+.legend h3 {
+  font-family: var(--label-sans);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(56, 50, 42, 0.1);
+}
+
+.row:first-of-type {
+  border-top: none;
+}
+
+.side {
+  flex-shrink: 0;
+  width: 46px;
+  font-family: var(--label-util);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rain);
+  padding-top: 1px;
+}
+
+.txt {
+  font-family: var(--label-util);
+  font-size: 12px;
+  line-height: 1.45;
+  color: #4a4339;
+}
+
+.txt b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.note {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(56, 50, 42, 0.1);
+  font-family: var(--label-util);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+  font-style: italic;
+}
