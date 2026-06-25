@@ -25,16 +25,13 @@
 
 /* Logo */
 .logo {
-  display: flex;
-  align-items: center;
+  font-family: var(--serif);
+  font-size: 1.38rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--bark);
 }
-.logoImg {
-  height: 40px;
-  width: 40px;
-  border-radius: 10px;
-  object-fit: cover;
-  display: block;
-}
+.logo span { color: var(--loam); }
 
 /* Desktop links */
 .links {
