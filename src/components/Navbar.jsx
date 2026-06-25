@@ -30,7 +30,7 @@ export default function Navbar({ onOpenCart, cartCount = 0 }) {
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <Link to="/" className={styles.logo} onClick={close}>
-          Loam<span>Skin</span>
+          <img src="/logo.png" alt="LoamSkin" className={styles.logoImg} />
         </Link>
 
         <ul className={styles.links}>
