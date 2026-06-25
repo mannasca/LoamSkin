@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import JarIllustration from '../components/JarIllustration'
 import ProductCard from '../components/ProductCard'
 import { products, testimonials, ritualSteps, press } from '../data/products'
@@ -164,7 +165,7 @@ export default function Home({ onAddToCart }) {
                 Every skin,<br />a different <em>blend.</em>
               </h2>
             </div>
-            <a href="#products" className={styles.btnGhost}>View all</a>
+            <Link to="/products" className={styles.btnGhost}>View all</Link>
           </div>
           <div className={styles.productsGrid}>
             {products.map((p, i) => (

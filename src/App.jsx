@@ -4,6 +4,7 @@ import AnnouncementBar from './components/AnnouncementBar'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
+import Products from './pages/Products'
 import CartDrawer from './components/CartDrawer'
 import CheckoutModal from './components/CheckoutModal'
 
@@ -88,6 +89,7 @@ export default function App() {
       />
       <Routes>
         <Route path="/" element={<Home onAddToCart={handleAddToCart} />} />
+        <Route path="/products" element={<Products onAddToCart={handleAddToCart} />} />
       </Routes>
       <CartDrawer
         isOpen={cartOpen}
