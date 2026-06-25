@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import AnnouncementBar from './components/AnnouncementBar'
 import Navbar from './components/Navbar'
@@ -7,11 +7,24 @@ import Home from './pages/Home'
 import CartDrawer from './components/CartDrawer'
 import CheckoutModal from './components/CheckoutModal'
 
+const CART_KEY = 'loamskin_cart'
+
 export default function App() {
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem(CART_KEY)
+      return saved ? JSON.parse(saved) : []
+    } catch {
+      return []
+    }
+  })
   const [cartOpen, setCartOpen] = useState(false)
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [orderPlaced, setOrderPlaced] = useState(false)
+
+  useEffect(() => {
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems))
+  }, [cartItems])
 
   const subtotal = useMemo(
     () => cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
