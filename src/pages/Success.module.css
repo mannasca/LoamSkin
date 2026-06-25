@@ -1,0 +1,71 @@
+.page {
+  min-height: 100vh;
+  background: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.card {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  padding: 4rem 3rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 32px rgba(56, 50, 42, 0.08);
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+}
+
+.title {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--bark);
+  margin-bottom: 1rem;
+}
+
+.sub {
+  font-size: 0.95rem;
+  color: var(--bark-mid);
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+.tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--loam);
+  margin-bottom: 2.5rem;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--bark);
+  color: var(--loam-pale);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border-radius: 100px;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: var(--loam);
+}

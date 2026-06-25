@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Products from './pages/Products'
+import Success from './pages/Success'
 import CartDrawer from './components/CartDrawer'
 import CheckoutModal from './components/CheckoutModal'
 
@@ -66,9 +67,21 @@ export default function App() {
     setCartItems((prev) => prev.filter((item) => item.id !== id))
   }
 
-  const handleCheckoutOpen = () => {
+  const handleCheckoutOpen = async () => {
     if (cartItems.length === 0) return
-    setCheckoutOpen(true)
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: cartItems }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      }
+    } catch (err) {
+      console.error('Checkout error:', err)
+    }
   }
 
   const handleCheckoutClose = () => setCheckoutOpen(false)
@@ -90,6 +103,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home onAddToCart={handleAddToCart} />} />
         <Route path="/products" element={<Products onAddToCart={handleAddToCart} />} />
+        <Route path="/success" element={<Success />} />
       </Routes>
       <CartDrawer
         isOpen={cartOpen}
