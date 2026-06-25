@@ -31,9 +31,6 @@ export default function Products({ onAddToCart }) {
           <h1 className={styles.headline}>
             Every skin,<br />a different <em>blend.</em>
           </h1>
-          <p className={styles.sub}>
-            Small-batched botanical body butters — crafted with intention, no shortcuts.
-          </p>
         </div>
       </div>
 
