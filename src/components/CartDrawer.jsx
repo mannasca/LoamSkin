@@ -12,6 +12,7 @@ export default function CartDrawer({
   onRemove,
   onCheckout,
   orderPlaced,
+  checkoutLoading,
 }) {
   return (
     <>
@@ -79,10 +80,10 @@ export default function CartDrawer({
           <button
             type="button"
             className={styles.checkoutBtn}
-            disabled={items.length === 0}
+            disabled={items.length === 0 || checkoutLoading}
             onClick={onCheckout}
           >
-            Checkout
+            {checkoutLoading ? 'Redirecting…' : 'Checkout'}
           </button>
         </div>
       </aside>

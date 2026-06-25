@@ -23,6 +23,7 @@ export default function App() {
   const [cartOpen, setCartOpen] = useState(false)
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [orderPlaced, setOrderPlaced] = useState(false)
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
 
   useEffect(() => {
     localStorage.setItem(CART_KEY, JSON.stringify(cartItems))
@@ -68,7 +69,8 @@ export default function App() {
   }
 
   const handleCheckoutOpen = async () => {
-    if (cartItems.length === 0) return
+    if (cartItems.length === 0 || checkoutLoading) return
+    setCheckoutLoading(true)
     try {
       const res = await fetch('/api/checkout', {
         method: 'POST',
@@ -78,9 +80,14 @@ export default function App() {
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
+      } else {
+        alert(data.error || 'Checkout failed. Please try again.')
       }
     } catch (err) {
       console.error('Checkout error:', err)
+      alert('Checkout failed. Please try again.')
+    } finally {
+      setCheckoutLoading(false)
     }
   }
 
@@ -117,6 +124,7 @@ export default function App() {
         onRemove={handleRemoveItem}
         onCheckout={handleCheckoutOpen}
         orderPlaced={orderPlaced}
+        checkoutLoading={checkoutLoading}
       />
       <CheckoutModal
         isOpen={checkoutOpen}
