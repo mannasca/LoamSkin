@@ -87,10 +87,6 @@ export default function Home({ onAddToCart }) {
             <p className={styles.cardName}>First Rain</p>
             <div className={styles.accentLine} />
             <p className={styles.cardSub}>Shea · Almond · Jojoba</p>
-            <div className={styles.cardRating}>
-              <span>★★★★★</span>
-              <span>5.0 (12 reviews)</span>
-            </div>
           </div>
         </div>
       </section>

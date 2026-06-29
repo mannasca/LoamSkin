@@ -226,21 +226,6 @@ main {
   text-transform: uppercase;
   margin-bottom: 0.65rem;
 }
-.cardRating {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-}
-.cardRating span:first-child {
-  color: #d4892a;
-  font-size: 0.68rem;
-}
-.cardRating span:last-child {
-  font-size: 0.55rem;
-  color: var(--warm-gray);
-  letter-spacing: 0.06em;
-}
 
 /* ── Ingredient Strip ─────────────────────────────────────────── */
 .strip {
