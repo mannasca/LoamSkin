@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import JarIllustration from '../components/JarIllustration'
 import ProductBackground from '../components/ProductBackground'
+import ReviewSection from '../components/ReviewSection'
 import { products } from '../data/products'
 import styles from './ProductDetail.module.css'
 
@@ -160,6 +161,8 @@ export default function ProductDetail({ onAddToCart }) {
           </div>
         </div>
       </section>
+
+      <ReviewSection product={product} />
 
       {others.length > 0 && (
         <section className={styles.related}>

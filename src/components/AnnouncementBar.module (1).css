@@ -1,0 +1,33 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 110;
+  height: 36px;
+  background: var(--bark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.35s ease;
+}
+.barHidden {
+  transform: translateY(-100%);
+}
+
+.msg {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--loam-light);
+  font-weight: 600;
+  animation: msgIn 0.35s ease both;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
