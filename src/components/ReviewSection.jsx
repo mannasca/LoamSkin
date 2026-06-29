@@ -1,22 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
+import { supabase } from '../lib/supabase'
 import styles from './ReviewSection.module.css'
-
-const STORAGE_KEY = 'loamskin_reviews'
-
-function getStoredReviews(slug) {
-  try {
-    const all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')
-    return all[slug] || []
-  } catch { return [] }
-}
-
-function saveReviews(slug, reviews) {
-  try {
-    const all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')
-    all[slug] = reviews
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(all))
-  } catch {}
-}
 
 function timeAgo(dateStr) {
   const diff = Date.now() - new Date(dateStr).getTime()
@@ -66,17 +50,20 @@ function StarDisplay({ rating, size = 'sm' }) {
 
 export default function ReviewSection({ product }) {
   const [reviews, setReviews] = useState([])
+  const [loading, setLoading] = useState(true)
   const [formOpen, setFormOpen] = useState(false)
   const [rating, setRating] = useState(0)
   const [name, setName] = useState('')
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [sortBy, setSortBy] = useState('newest')
   const [filterStar, setFilterStar] = useState(0)
 
   useEffect(() => {
-    setReviews(getStoredReviews(product.slug))
+    let cancelled = false
+    setLoading(true)
     setFormOpen(false)
     setSubmitted(false)
     setRating(0)
@@ -84,6 +71,18 @@ export default function ReviewSection({ product }) {
     setTitle('')
     setBody('')
     setFilterStar(0)
+
+    supabase
+      .from('reviews')
+      .select('*')
+      .eq('product_slug', product.slug)
+      .order('created_at', { ascending: false })
+      .then(({ data, error }) => {
+        if (!cancelled && !error) setReviews(data || [])
+        if (!cancelled) setLoading(false)
+      })
+
+    return () => { cancelled = true }
   }, [product.slug])
 
   const stats = useMemo(() => {
@@ -97,43 +96,53 @@ export default function ReviewSection({ product }) {
   const filtered = useMemo(() => {
     let list = [...reviews]
     if (filterStar > 0) list = list.filter(r => r.rating === filterStar)
-    if (sortBy === 'newest') list.sort((a, b) => new Date(b.date) - new Date(a.date))
+    if (sortBy === 'newest') list.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
     else if (sortBy === 'highest') list.sort((a, b) => b.rating - a.rating)
     else if (sortBy === 'lowest') list.sort((a, b) => a.rating - b.rating)
     else if (sortBy === 'helpful') list.sort((a, b) => (b.helpful || 0) - (a.helpful || 0))
     return list
   }, [reviews, sortBy, filterStar])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (rating === 0) return
-    const newReview = {
-      id: Date.now(),
-      rating,
-      name: name.trim() || 'Anonymous',
-      title: title.trim(),
-      body: body.trim(),
-      date: new Date().toISOString(),
-      helpful: 0,
-      verified: false,
+    if (rating === 0 || submitting) return
+    setSubmitting(true)
+
+    const { data, error } = await supabase
+      .from('reviews')
+      .insert({
+        product_slug: product.slug,
+        rating,
+        name: name.trim() || 'Anonymous',
+        title: title.trim() || null,
+        body: body.trim(),
+      })
+      .select()
+      .single()
+
+    if (!error && data) {
+      setReviews(prev => [data, ...prev])
+      setSubmitted(true)
+      setRating(0)
+      setName('')
+      setTitle('')
+      setBody('')
+      setTimeout(() => { setSubmitted(false); setFormOpen(false) }, 3000)
     }
-    const updated = [newReview, ...reviews]
-    setReviews(updated)
-    saveReviews(product.slug, updated)
-    setSubmitted(true)
-    setRating(0)
-    setName('')
-    setTitle('')
-    setBody('')
-    setTimeout(() => { setSubmitted(false); setFormOpen(false) }, 3000)
+    setSubmitting(false)
   }
 
-  const handleHelpful = (id) => {
-    const updated = reviews.map(r =>
-      r.id === id ? { ...r, helpful: (r.helpful || 0) + 1 } : r
-    )
-    setReviews(updated)
-    saveReviews(product.slug, updated)
+  const handleHelpful = async (id) => {
+    const review = reviews.find(r => r.id === id)
+    if (!review) return
+    const newCount = (review.helpful || 0) + 1
+
+    setReviews(prev => prev.map(r => r.id === id ? { ...r, helpful: newCount } : r))
+
+    await supabase
+      .from('reviews')
+      .update({ helpful: newCount })
+      .eq('id', id)
   }
 
   const maxDist = Math.max(...stats.dist, 1)
@@ -155,7 +164,6 @@ export default function ReviewSection({ product }) {
           )}
         </div>
 
-        {/* Write review form */}
         {formOpen && !submitted && (
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.formHeader}>
@@ -209,8 +217,8 @@ export default function ReviewSection({ product }) {
               />
             </div>
 
-            <button type="submit" className={styles.submitBtn} disabled={rating === 0}>
-              Submit Review
+            <button type="submit" className={styles.submitBtn} disabled={rating === 0 || submitting}>
+              {submitting ? 'Submitting...' : 'Submit Review'}
             </button>
           </form>
         )}
@@ -222,7 +230,6 @@ export default function ReviewSection({ product }) {
           </div>
         )}
 
-        {/* Stats panel */}
         {stats.total > 0 && (
           <div className={styles.statsGrid}>
             <div className={styles.overallBox}>
@@ -259,7 +266,6 @@ export default function ReviewSection({ product }) {
           </div>
         )}
 
-        {/* Filter / Sort */}
         {stats.total > 0 && (
           <div className={styles.controls}>
             {filterStar > 0 && (
@@ -284,8 +290,11 @@ export default function ReviewSection({ product }) {
           </div>
         )}
 
-        {/* Review list */}
-        {filtered.length > 0 ? (
+        {loading ? (
+          <div className={styles.empty}>
+            <p className={styles.emptyText}>Loading reviews...</p>
+          </div>
+        ) : filtered.length > 0 ? (
           <div className={styles.list}>
             {filtered.map(r => (
               <div key={r.id} className={styles.review}>
@@ -296,7 +305,7 @@ export default function ReviewSection({ product }) {
                     </div>
                     <div>
                       <p className={styles.reviewAuthor}>{r.name}</p>
-                      <p className={styles.reviewDate}>{timeAgo(r.date)}</p>
+                      <p className={styles.reviewDate}>{timeAgo(r.created_at)}</p>
                     </div>
                   </div>
                   <StarDisplay rating={r.rating} />
