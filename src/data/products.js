@@ -6,8 +6,8 @@ export const products = [
     subtitle: 'Petrichor Body Butter',
     tagline: 'Shea · Almond · Jojoba',
     hook: 'The first rain hitting dry earth.',
-    description: 'The sky finally breaks and the whole world exhales. Dark. Rich. Alive. The oldest scent on earth — and the one that started it all.',
-    longDescription: 'The sky finally breaks and the whole world exhales. Dark. Rich. Alive. The oldest scent on earth — and the one that started it all. Small-batched and hand-poured in Toronto with cold-pressed botanicals.',
+    description: 'The sky finally breaks and the whole world exhales. Dark. Rich. Alive. The oldest scent on earth, and the one that started it all.',
+    longDescription: 'The sky finally breaks and the whole world exhales. Dark. Rich. Alive. The oldest scent on earth, and the one that started it all. Small-batched and hand-poured in Toronto with cold-pressed botanicals.',
     closer: 'This is where LoamSkin began.',
     note: 'Petrichor',
     noteColor: '#c79a64',
@@ -19,7 +19,7 @@ export const products = [
     ingredients: ['Shea Butter', 'Sweet Almond Oil', 'Jojoba Oil', 'Beeswax', 'Vitamin E'],
     rating: 5.0,
     reviewCount: 12,
-    size: '50g',
+    size: '120g',
     available: true,
   },
   {
@@ -29,8 +29,8 @@ export const products = [
     subtitle: 'Ozone Air Body Butter',
     tagline: 'Ozone · Clean · Sky',
     hook: 'The charge in the air right before it rains.',
-    description: 'That cool, electric hush when the sky holds its breath. Bright. Clean. Weightless. The smell of almost — of everything about to happen.',
-    longDescription: 'That cool, electric hush when the sky holds its breath. Bright. Clean. Weightless. The smell of almost — of everything about to happen. A lighter formula for everyday wear.',
+    description: 'That cool, electric hush when the sky holds its breath. Bright. Clean. Weightless. The smell of almost, of everything about to happen.',
+    longDescription: 'That cool, electric hush when the sky holds its breath. Bright. Clean. Weightless. The smell of almost, of everything about to happen. A lighter formula for everyday wear.',
     closer: 'A breath of open sky you can wear.',
     note: 'Ozone air',
     noteColor: '#aeb4b9',
@@ -42,7 +42,7 @@ export const products = [
     ingredients: ['Shea Butter', 'Coconut Oil', 'Aloe Vera', 'Beeswax', 'Vitamin E'],
     rating: 0,
     reviewCount: 0,
-    size: '50g',
+    size: '120g',
     available: false,
   },
   {
@@ -52,8 +52,8 @@ export const products = [
     subtitle: 'Wet Earth Body Butter',
     tagline: 'Wet Earth · Warm · Dark',
     hook: 'The deep smell of soil once the storm has passed.',
-    description: 'The rain sinks in, and the earth keeps breathing. Warm. Mineral. Ancient. Saundhi — the scent of home that lives in the ground and waits for you.',
-    longDescription: 'The rain sinks in, and the earth keeps breathing. Warm. Mineral. Ancient. Saundhi — the scent of home that lives in the ground and waits for you. A heavier butter for dry skin that craves nourishment.',
+    description: 'The rain sinks in, and the earth keeps breathing. Warm. Mineral. Ancient. Saundhi, the scent of home that lives in the ground and waits for you.',
+    longDescription: 'The rain sinks in, and the earth keeps breathing. Warm. Mineral. Ancient. Saundhi, the scent of home that lives in the ground and waits for you. A heavier butter for dry skin that craves nourishment.',
     closer: 'An earthy calm you can wear.',
     note: 'Wet earth',
     noteColor: '#9c7848',
@@ -65,7 +65,7 @@ export const products = [
     ingredients: ['Shea Butter', 'Cocoa Butter', 'Jojoba Oil', 'Beeswax', 'Vitamin E'],
     rating: 0,
     reviewCount: 0,
-    size: '50g',
+    size: '120g',
     available: false,
   },
   {
@@ -88,7 +88,7 @@ export const products = [
     ingredients: ['Shea Butter', 'Argan Oil', 'Sea Buckthorn', 'Beeswax', 'Vitamin E'],
     rating: 0,
     reviewCount: 0,
-    size: '50g',
+    size: '120g',
     available: false,
   },
 ]
@@ -96,21 +96,21 @@ export const products = [
 export const testimonials = [
   {
     id: 1,
-    text: "I've tried so many body butters. First Rain is the only one that actually absorbs — no greasy residue, just soft skin and the most calming scent.",
+    text: "I've tried so many body butters. First Rain is the only one that actually absorbs. No greasy residue, just soft skin and the most calming scent.",
     author: 'Amara L.',
     location: 'Toronto, ON',
     product: 'First Rain',
   },
   {
     id: 2,
-    text: "The scent is unreal — earthy and clean. My skin has never felt this nourished. I go through a jar a month and I'm not stopping.",
+    text: "The scent is unreal. Earthy and clean. My skin has never felt this nourished. I go through a jar a month and I'm not stopping.",
     author: 'Priya N.',
     location: 'Vancouver, BC',
     product: 'First Rain',
   },
   {
     id: 3,
-    text: "Bought it on a whim and now I'm obsessed. The shea melts right in. Clean ingredients, beautiful packaging — worth every penny.",
+    text: "Bought it on a whim and now I'm obsessed. The shea melts right in. Clean ingredients, beautiful packaging. Worth every penny.",
     author: 'Sade W.',
     location: 'Montreal, QC',
     product: 'First Rain',
@@ -123,7 +123,7 @@ export const ritualSteps = [
   {
     num: '01',
     title: 'Cleanse',
-    desc: 'Start with warm water and a gentle wash. Pat dry — leave skin slightly damp.',
+    desc: 'Start with warm water and a gentle wash. Pat dry, leave skin slightly damp.',
   },
   {
     num: '02',
@@ -133,6 +133,6 @@ export const ritualSteps = [
   {
     num: '03',
     title: 'Press',
-    desc: "Press — don't rub — into skin. Let it absorb. Give it a moment. This is the ritual.",
+    desc: "Press, don't rub, into skin. Let it absorb. Give it a moment. This is the ritual.",
   },
 ]

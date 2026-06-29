@@ -43,6 +43,7 @@ export default function Footer() {
           <p className={styles.colTitle}>Shop</p>
           <ul className={styles.colLinks}>
             <li><a href="#products">First Rain</a></li>
+            <li><a href="#products">Body Butter 120g</a></li>
           </ul>
         </div>
 
