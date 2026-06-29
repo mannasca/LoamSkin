@@ -47,7 +47,48 @@
         "priceCurrency": "CAD",
         "price": "26.99",
         "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition"
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "4.99",
+            "currency": "CAD"
+          },
+          "shippingDestination": [
+            {
+              "@type": "DefinedRegion",
+              "addressCountry": "CA"
+            },
+            {
+              "@type": "DefinedRegion",
+              "addressCountry": "US"
+            }
+          ],
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 7,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": ["CA", "US"],
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/ReturnShippingFees"
+        }
       },
       "aggregateRating": {
         "@type": "AggregateRating",
