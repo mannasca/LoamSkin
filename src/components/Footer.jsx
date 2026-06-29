@@ -43,7 +43,6 @@ export default function Footer() {
           <p className={styles.colTitle}>Shop</p>
           <ul className={styles.colLinks}>
             <li><a href="#products">First Rain</a></li>
-            <li><a href="#products">Body Butter 50g</a></li>
           </ul>
         </div>
 
@@ -66,13 +65,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className={styles.certifications}>
-        {['✓ Cruelty-Free', '◯ Vegan', '❋ 100% Natural', '✦ Small-Batch'].map(c => (
-          <span key={c} className={styles.cert}>{c}</span>
-        ))}
-      </div>
-
-      <div className={styles.bottom}>
+<div className={styles.bottom}>
         <p>© {new Date().getFullYear()} LoamSkin. All rights reserved. Made in Canada.</p>
         <p className={styles.bottomLinks}>Privacy Policy · Terms of Service · Shipping Policy</p>
       </div>
