@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Products from './pages/Products'
+import ProductDetail from './pages/ProductDetail'
 import Success from './pages/Success'
 import CartDrawer from './components/CartDrawer'
 import CheckoutModal from './components/CheckoutModal'
@@ -110,6 +111,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home onAddToCart={handleAddToCart} />} />
         <Route path="/products" element={<Products onAddToCart={handleAddToCart} />} />
+        <Route path="/product/:slug" element={<ProductDetail onAddToCart={handleAddToCart} />} />
         <Route path="/success" element={<Success />} />
       </Routes>
       <Footer />
