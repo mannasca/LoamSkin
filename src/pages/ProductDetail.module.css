@@ -49,6 +49,8 @@
 /* Hero */
 .hero {
   padding: 3rem 3rem 5rem;
+  position: relative;
+  overflow: hidden;
 }
 .heroInner {
   max-width: 1120px;
@@ -57,6 +59,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: start;
+  position: relative;
+  z-index: 1;
 }
 
 /* Visual side */

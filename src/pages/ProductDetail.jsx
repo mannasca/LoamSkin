@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import JarIllustration from '../components/JarIllustration'
+import ProductBackground from '../components/ProductBackground'
 import { products } from '../data/products'
 import styles from './ProductDetail.module.css'
 
@@ -63,6 +64,7 @@ export default function ProductDetail({ onAddToCart }) {
       </div>
 
       <section className={styles.hero}>
+        <ProductBackground slug={product.slug} />
         <div className={styles.heroInner}>
           <div className={styles.visual}>
             <div
