@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import JarIllustration from '../components/JarIllustration'
 import ProductCard from '../components/ProductCard'
 import { products, ritualSteps } from '../data/products'
@@ -20,10 +20,21 @@ const BENEFITS = [
 ]
 
 export default function Home({ onAddToCart }) {
+  const location = useLocation()
   const [subscribed, setSubscribed] = useState(false)
   const [email, setEmail] = useState('')
   const [subError, setSubError] = useState('')
   const [subLoading, setSubLoading] = useState(false)
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      setTimeout(() => {
+        const el = document.getElementById(location.state.scrollTo)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+      window.history.replaceState({}, '')
+    }
+  }, [location.state])
 
   useEffect(() => {
     const els = document.querySelectorAll('[data-animate]')

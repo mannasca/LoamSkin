@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
 const NAV_LINKS = [
-  { href: '#story',      label: 'Story' },
-  { href: '#products',   label: 'Products' },
-  { href: '#ritual',     label: 'Ritual' },
-  { href: '#newsletter', label: 'Journal' },
+  { hash: 'story',      label: 'Story' },
+  { hash: 'products',   label: 'Products' },
+  { hash: 'ritual',     label: 'Ritual' },
+  { hash: 'newsletter', label: 'Journal' },
 ]
 
 export default function Navbar({ onOpenCart, cartCount = 0 }) {
   const [scrolled,  setScrolled]  = useState(false)
   const [menuOpen,  setMenuOpen]  = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -26,6 +28,17 @@ export default function Navbar({ onOpenCart, cartCount = 0 }) {
 
   const close = () => setMenuOpen(false)
 
+  const handleNavClick = (hash) => (e) => {
+    e.preventDefault()
+    close()
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: hash } })
+    } else {
+      const el = document.getElementById(hash)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
@@ -35,12 +48,16 @@ export default function Navbar({ onOpenCart, cartCount = 0 }) {
 
         <ul className={styles.links}>
           {NAV_LINKS.map(l => (
-            <li key={l.href}><a href={l.href}>{l.label}</a></li>
+            <li key={l.hash}>
+              <a href={`/#${l.hash}`} onClick={handleNavClick(l.hash)}>{l.label}</a>
+            </li>
           ))}
         </ul>
 
         <div className={styles.actions}>
-          <a href="#products" className={styles.cta}>Shop Now</a>
+          <a href="/#products" className={styles.cta} onClick={handleNavClick('products')}>
+            Shop Now
+          </a>
           <button
             type="button"
             className={styles.cartBtn}
@@ -71,12 +88,12 @@ export default function Navbar({ onOpenCart, cartCount = 0 }) {
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`} aria-hidden={!menuOpen}>
         <ul className={styles.mobileLinks}>
           {NAV_LINKS.map((l, i) => (
-            <li key={l.href} style={{ animationDelay: `${i * 0.07 + 0.1}s` }}>
-              <a href={l.href} onClick={close}>{l.label}</a>
+            <li key={l.hash} style={{ animationDelay: `${i * 0.07 + 0.1}s` }}>
+              <a href={`/#${l.hash}`} onClick={handleNavClick(l.hash)}>{l.label}</a>
             </li>
           ))}
         </ul>
-        <a href="#products" className={styles.mobileShop} onClick={close}>
+        <a href="/#products" className={styles.mobileShop} onClick={handleNavClick('products')}>
           Shop the Collection
         </a>
         <p className={styles.mobileSub}>Botanical · Slow-made · Pure</p>
