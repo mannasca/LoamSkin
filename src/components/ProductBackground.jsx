@@ -2,12 +2,12 @@ import { useEffect, useRef } from 'react'
 import styles from './ProductBackground.module.css'
 
 function createRainEffect(ctx, w, h) {
-  const drops = Array.from({ length: 80 }, () => ({
+  const drops = Array.from({ length: 150 }, () => ({
     x: Math.random() * w,
     y: Math.random() * h,
-    len: 12 + Math.random() * 18,
-    speed: 4 + Math.random() * 4,
-    opacity: 0.08 + Math.random() * 0.12,
+    len: 16 + Math.random() * 28,
+    speed: 5 + Math.random() * 6,
+    opacity: 0.12 + Math.random() * 0.2,
   }))
 
   return () => {
@@ -58,13 +58,13 @@ function createCloudEffect(ctx, w, h) {
 }
 
 function createEarthEffect(ctx, w, h) {
-  const particles = Array.from({ length: 50 }, () => ({
+  const particles = Array.from({ length: 90 }, () => ({
     x: Math.random() * w,
     y: h + Math.random() * 20,
-    size: 2 + Math.random() * 4,
-    speed: 0.3 + Math.random() * 0.6,
-    drift: (Math.random() - 0.5) * 0.4,
-    opacity: 0.06 + Math.random() * 0.1,
+    size: 2.5 + Math.random() * 5,
+    speed: 0.4 + Math.random() * 0.8,
+    drift: (Math.random() - 0.5) * 0.5,
+    opacity: 0.1 + Math.random() * 0.15,
     phase: Math.random() * Math.PI * 2,
   }))
 
@@ -89,13 +89,13 @@ function createEarthEffect(ctx, w, h) {
 }
 
 function createSandEffect(ctx, w, h) {
-  const grains = Array.from({ length: 60 }, () => ({
+  const grains = Array.from({ length: 100 }, () => ({
     x: Math.random() * w,
     y: Math.random() * h,
-    size: 1.5 + Math.random() * 2.5,
-    speedX: 0.5 + Math.random() * 1,
-    speedY: 0.1 + Math.random() * 0.3,
-    opacity: 0.06 + Math.random() * 0.08,
+    size: 2 + Math.random() * 3.5,
+    speedX: 0.6 + Math.random() * 1.2,
+    speedY: 0.15 + Math.random() * 0.4,
+    opacity: 0.1 + Math.random() * 0.14,
     wave: Math.random() * Math.PI * 2,
   }))
 

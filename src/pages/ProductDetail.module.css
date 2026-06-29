@@ -131,6 +131,13 @@
   margin-bottom: 1rem;
   font-weight: 600;
 }
+.subtitle {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--warm-gray);
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
 
 .ratingRow {
   display: flex;
@@ -160,6 +167,14 @@
   font-size: 0.9rem;
   color: var(--bark-mid);
   line-height: 1.85;
+  margin-bottom: 0.75rem;
+}
+.closer {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--loam);
+  font-weight: 500;
   margin-bottom: 1.75rem;
 }
 

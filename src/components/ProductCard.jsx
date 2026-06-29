@@ -25,7 +25,7 @@ export default function ProductCard({ product, onAddToCart }) {
       </div>
 
       <p className={styles.name}>{product.name}</p>
-      <p className={styles.tagline}>{product.tagline}</p>
+      <p className={styles.subtitle}>{product.subtitle}</p>
 
       {product.available && product.rating > 0 && (
         <div className={styles.ratingRow} aria-label={`${product.rating} out of 5`}>
@@ -37,6 +37,7 @@ export default function ProductCard({ product, onAddToCart }) {
       )}
 
       <p className={styles.hook}>{product.hook}</p>
+      <p className={styles.closer}>{product.closer}</p>
 
       <div className={styles.pills}>
         {product.ingredients.slice(0, 3).map(ing => (

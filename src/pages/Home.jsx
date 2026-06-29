@@ -54,7 +54,7 @@ export default function Home({ onAddToCart }) {
             in bloom.
           </h1>
           <p className={styles.heroBody}>
-            First Rain body butter — shea and sweet almond oil, hand-poured
+            First Rain body butter. Shea and sweet almond oil, hand-poured
             in small batches. The scent of earth after rain, on your skin.
           </p>
           <div className={styles.heroCtas}>
@@ -137,7 +137,7 @@ export default function Home({ onAddToCart }) {
               Rooted in <em>nature</em>,<br />made with intention.
             </h2>
             <p className={styles.bodyText} style={{ marginBottom: '1.25rem' }}>
-              We believe skin care should come from the earth — not a lab. Every
+              We believe skin care should come from the earth, not a lab. Every
               LoamSkin butter starts with cold-pressed botanicals, ethically
               sourced and left as close to their natural state as possible.
             </p>
@@ -199,7 +199,7 @@ export default function Home({ onAddToCart }) {
               <p className={styles.ritualQuote}>
                 "Your skin remembers what you feed it."
               </p>
-              <span className={styles.ritualSub}>— LoamSkin</span>
+              <span className={styles.ritualSub}>LoamSkin</span>
             </div>
           </div>
         </div>

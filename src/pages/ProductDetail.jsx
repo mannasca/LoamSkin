@@ -91,7 +91,7 @@ export default function ProductDetail({ onAddToCart }) {
               {product.tag}
             </span>
             <h1 className={styles.name}>{product.name}</h1>
-            <p className={styles.tagline}>{product.tagline}</p>
+            <p className={styles.subtitle}>{product.subtitle}</p>
 
             {product.available && product.rating > 0 && (
               <div className={styles.ratingRow}>
@@ -102,8 +102,9 @@ export default function ProductDetail({ onAddToCart }) {
               </div>
             )}
 
-            <p className={styles.hook}>{product.hook}</p>
+            <h2 className={styles.hook}>{product.hook}</h2>
             <p className={styles.desc}>{product.longDescription || product.description}</p>
+            <p className={styles.closer}>{product.closer}</p>
 
             <div className={styles.price}>
               <span className={styles.priceAmount}>${product.price}</span>

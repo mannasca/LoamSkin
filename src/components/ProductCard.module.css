@@ -10,6 +10,9 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -32,6 +35,12 @@
   border-radius: 999px;
   padding: 0.33rem 0.75rem;
   font-weight: 700;
+}
+
+.tagSoon {
+  background: linear-gradient(120deg, #f5eadb, #efe0cd);
+  border-color: rgba(187, 107, 52, 0.3);
+  color: var(--loam);
 }
 
 /* Jar */
@@ -58,6 +67,24 @@
   text-align: center;
 }
 
+.subtitle {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--warm-gray);
+  margin-bottom: 0.75rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.closer {
+  font-size: 0.78rem;
+  color: var(--loam);
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 1.1rem;
+  font-weight: 500;
+}
+
 /* Star rating */
 .ratingRow {
   display: flex;
@@ -76,12 +103,14 @@
   letter-spacing: 0.02em;
 }
 
-/* Description */
-.desc {
-  font-size: 0.8rem;
-  color: var(--warm-gray);
+/* Hook line */
+.hook {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--bark-mid);
   text-align: center;
-  line-height: 1.85;
+  line-height: 1.65;
   margin-bottom: 1.1rem;
   flex: 1;
 }
@@ -150,4 +179,14 @@
 .addBtn:hover { background: var(--loam); transform: translateY(-1px); }
 .addBtn.added {
   background: var(--sage);
+}
+
+.waitlist {
+  font-size: 0.64rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--loam);
+  font-weight: 700;
+  border-bottom: 1px solid rgba(187, 107, 52, 0.4);
+  padding-bottom: 2px;
 }

@@ -32,7 +32,7 @@ export default function Products({ onAddToCart }) {
             Every skin,<br />a different <em>blend.</em>
           </h1>
           <p className={styles.sub}>
-            Small-batched botanical body butters — crafted with intention, no shortcuts.
+            Small-batched botanical body butters. Crafted with intention, no shortcuts.
           </p>
         </div>
       </div>

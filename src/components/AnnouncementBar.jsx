@@ -3,7 +3,7 @@ import styles from './AnnouncementBar.module.css'
 
 const MESSAGES = [
   '🌿  Free shipping on orders over $65',
-  '✦  New 2026 Batch — Small-batch botanical blends, freshly made',
+  '✦  New 2026 Batch · Small-batch botanical blends, freshly made',
   '◯  Cruelty-Free  ·  Vegan  ·  No Synthetic Fillers',
 ]
 
